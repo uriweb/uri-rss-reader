@@ -1,0 +1,49 @@
+{
+  "name": "uri-plugin-template",
+  "description": "URI Plugin Template",
+  "version": "0.1.0",
+  "homepage": "https://www.uri.edu",
+  "repository": "https://github.com/uriweb/uri-plugin-template",
+  "docs": "https://github.com/uriweb/uri-plugin-template#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "University of Rhode Island",
+  "humans": [
+    "Brandon Fuller <bjcfuller@uri.edu>"
+  ],
+  "license": "GPL-3.0",
+  "licenseURI": "http://www.gnu.org/licenses/gpl.html",
+  "devDependencies": {
+    "@wordpress/eslint-plugin": "^15.0.0",
+    "autoprefixer": "^10.4.15",
+    "gulp": "^4.0.2",
+    "gulp-concat": ">=2.6.1",
+    "gulp-eslint": "^6.0.0",
+    "gulp-header": "^2.0.9",
+    "gulp-postcss": ">=9.0.1",
+    "gulp-replace-task": "^2.0.1",
+    "gulp-sass": "^5.1.0",
+    "gulp-shell": ">=0.8.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-strip-debug": "^5.0.0",
+    "gulp-terser": ">=2.1.0"
+  },
+  "browserslist": {
+    "production": [
+      "> 1%",
+      "last 2 versions",
+      "Firefox >= 20",
+      "iOS >=8"
+    ],
+    "development": [
+      "> 1%",
+      "last 2 versions",
+      "Firefox >= 20",
+      "iOS >=8"
+    ]
+  },
+  "dependencies": {
+    "sass": "^1.66.1"
+  }
+}
