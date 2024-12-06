@@ -1,0 +1,17 @@
+{
+    "name": "uriweb/uri-rss-reader",
+    "type":  "wordpress-plugin",
+    "description": "A RSS Reader that displays news feeds.",
+    "authors": [
+        {
+            "name": "URI Web Communications",
+            "email": "web-group@uri.edu",
+            "homepage": "https://github.com/uriweb"
+        }
+    ],
+    "homepage": "https://www.uri.edu",
+    "license": "GPL-3.0-only",
+    "require": {
+        "php": ">=7.4"
+    }
+}

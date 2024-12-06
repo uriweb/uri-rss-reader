@@ -1,10 +1,10 @@
 {
-  "name": "uri-plugin-template",
-  "description": "URI Plugin Template",
+  "name": "uri-rss-reader",
+  "description": "URI RSS Reader",
   "version": "0.1.0",
   "homepage": "https://www.uri.edu",
-  "repository": "https://github.com/uriweb/uri-plugin-template",
-  "docs": "https://github.com/uriweb/uri-plugin-template#readme",
+  "repository": "https://github.com/uriweb/uri-rss-reader",
+  "docs": "https://github.com/uriweb/uri-rss-reader#readme",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -1,7 +1,7 @@
 /**
  * SCRIPTS
  *
- * @package uri-plugin-template
+ * @package uri-rss-reader
  */
 
 ( function() {
