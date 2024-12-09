@@ -34,3 +34,6 @@ add_action( 'wp_enqueue_scripts', 'uri_rss_reader_enqueues' );
 
 // Include shortcodes
 include( URI_RSS_READER_DIR_PATH . 'inc/uri-rss-reader-shortcode.php' );
+
+// Include parsing
+include( URI_RSS_READER_DIR_PATH . 'inc/uri-rss-reader-parse.php' );
