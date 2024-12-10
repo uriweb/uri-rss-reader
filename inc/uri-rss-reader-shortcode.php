@@ -20,10 +20,11 @@ function uri_rss_reader_shortcode($attributes, $shortcode)
         'after' => '</div>'
     ), $attributes, $shortcode);
 
-    $feed_url = uri_rss_reader_load_xml( $attributes['url']);
-    $output = uri_rss_reader_feed_list($feed_url);
+    $feed_data = uri_rss_reader_load_xml( $attributes['url']);
+    $exclude_urls = explode(", ", $attributes['exclude']);
+    $output = uri_rss_reader_feed_list($feed_data, $exclude_urls);
 
     return $output;
 }
 
-add_shortcode('uri-rss', 'uri_rss_reader_shortcode');
+add_shortcode('uri-rss-reader', 'uri_rss_reader_shortcode');

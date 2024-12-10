@@ -6,7 +6,7 @@ The URI RSS Reader plugin displays an RSS news feed via a shortcode.
 Paste the shortcode into a page to display the news feed. By default, the URI RSS Reader will display all of the posts in the feed. To exclude any posts, use the 'exclude' attribute in the shortcode with a list of urls seperated by a ```comma``` + ```space```.
 
 ```
-[uri-rss-reader url="[https://example.edu/feed]" exclude="https://exclude.edu/one, https://exclude.edu/two"]
+[uri-rss-reader url="https://example.edu/feed" exclude="https://exclude.edu/one, https://exclude.edu/two"]
  ```
 
 
