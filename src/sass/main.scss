@@ -1,2 +1,30 @@
 /* ======= STYLES ======= */
 
+.uri-rss-reader-feed {
+
+}
+
+ .uri-rss-reader-item {
+    display: flex;
+    column-gap: 1rem;
+    align-items: center;
+}
+
+.uri-rss-reader-image {
+   display: block;
+   padding: 2rem;
+}
+
+.no-thumbnail {
+    width: 150px;
+    height: 150px;
+    padding: 2rem;
+}
+
+.uri-rss-reader-title-link {
+    
+}
+
+.latest-news {
+    
+}
