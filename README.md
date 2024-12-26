@@ -3,10 +3,10 @@
 The URI RSS Reader plugin displays an RSS news feed via a shortcode.
 
 ## How do I use the shortcode?
-Paste the shortcode into a page to display the news feed. By default, the URI RSS Reader will display all of the posts in the feed. To exclude any posts, use the 'exclude' attribute in the shortcode with a list of urls seperated by a ```comma``` + ```space```.
+Paste the shortcode into a page to display the news feed. By default, the URI RSS Reader will display the first 20 posts in the feed. To exclude any posts, use the 'exclude' attribute in the shortcode with a list of urls seperated by a ```comma``` + ```space```. To display a fewer/larger number of posts use the 'display' attribute. Other attributes include the cache time-out (default is 1 hour) and 'before' and 'after' div classes.
 
 ```
-[uri-rss-reader url="https://example.edu/feed" exclude="https://exclude.edu/one, https://exclude.edu/two"]
+[uri-rss-reader url="https://example.edu/feed" exclude="https://exclude.edu/one, https://exclude.edu/two" cache="1 hour" display="5"]
  ```
 
 
