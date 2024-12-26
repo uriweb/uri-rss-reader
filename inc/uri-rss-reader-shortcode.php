@@ -13,14 +13,18 @@
 function uri_rss_reader_shortcode($attributes, $shortcode)
 {
     // default attributes
-    $attributes = shortcode_atts(array(
-        'url' => NULL,
-        'display' => '20',
-        'exclude' => NULL,
-        'cache' => '1 hour',
-        'before' => '<div class="uri-rss-reader">',
-        'after' => '</div>'
-    ), $attributes, $shortcode);
+    $attributes = shortcode_atts(
+        array(
+            'url' => NULL,
+            'display' => '20',
+            'exclude' => NULL,
+            'cache' => '1 hour',
+            'before' => '<div class="uri-rss-reader">',
+            'after' => '</div>'
+        ),
+        $attributes,
+        $shortcode
+    );
 
     // Turn excluded urls into an array
     $exclude_urls = explode(", ", $attributes['exclude']);
@@ -29,7 +33,7 @@ function uri_rss_reader_shortcode($attributes, $shortcode)
     update_site_option('uri_rss_reader_recency', $attributes['cache']);
 
     //Get raw xml data
-   // $xml_data = uri_rss_reader_get_xml($attributes['url']);
+    //$xml_data = uri_rss_reader_get_xml($attributes['url']);
 
     //Get array from raw xml data
     //$feed_data = uri_rss_reader_build_array($xml_data, $attributes['cache']);
