@@ -6,123 +6,132 @@
  * @package uri-rss-reader
  */
 
- /**
-  * Get the XML data from the URL
-  */
-function uri_rss_reader_get_xml ($url) {
+/**
+ * Get the XML data from the URL
+ * @param str $url from the shortcode ex. https://www.uri.edu/news/tags/engineering/feed
+ */
+
+function uri_rss_reader_get_xml($url)
+{
     $response = wp_safe_remote_get($url);
-    $body = (wp_remote_retrieve_body($response));
-    $rss = simplexml_load_string($body);
-    return $rss;
+
+    if ($response['headers']['content-type'] == 'application/rss+xml; charset=UTF-8' && '200' == wp_remote_retrieve_response_code($response)) {
+        // hooray, all is well!
+        $body = (wp_remote_retrieve_body($response));
+        $rss = simplexml_load_string($body);
+        return $rss;
+    } else {
+
+        // still here?  Then we have an error condition
+
+        if (is_wp_error($response)) {
+            $error_message = $response->get_error_message();
+            echo 'There was an error with the RSS Reader Plugin: ' . $error_message;
+            return FALSE;
+        }
+        if ('200' != wp_remote_retrieve_response_code($response)) {
+            echo $response;
+            return FALSE;
+        }
+        if ($response['headers']['content-type'] == 'text/html; charset=UTF-8') {
+            echo "Not a valid RSS feed.";
+            return FALSE;
+        }
+
+        // still here?  the error condition is indeed unexpected
+        echo "Server not responding?";
+        return FALSE;
+    }
 }
 
 /**
- * Load the XML data from the URL of the feed
- * @param str feed url
- * @param arr urls to exclude from feed
+ * Load the XML data from the URL of the feed and parse out the title, link, image, and alt-text it into an array
+ * @param obj xml feed data
  * @return arr feed data
  */
-function uri_rss_reader_get_array($rss, $exclude_urls)
+function uri_rss_reader_build_array($rss)
 {
 
-    // Initialize an array to hold the feed data
     $array_feed = [];
 
     // Loop through each RSS item
     foreach ($rss->channel->item as $item) {
-        // Check if the <link> element matches the excluded URL
-        if (!in_array((string)$item->link, $exclude_urls)) {
-            $feed_item = [
-                'title' => (string)$item->title,
-                'link'  => (string)$item->link,
-            ];
+        $feed_item = [
+            'title' => (string)$item->title,
+            'link'  => (string)$item->link,
+        ];
 
-            // Check if media:thumbnail exists and extract the URL and alt attribute
-            if (isset($item->children('media', true)->thumbnail)) {
-                $thumbnail = $item->children('http://search.yahoo.com/mrss/')->thumbnail->attributes();
-                $feed_item['media:thumbnail'] = [
-                    'url' => (string)$thumbnail['url'],
-                    'alt' => (string)$thumbnail['alt'] ?: 'Featured image for ' . $item->title
-                ];
-            }
-            // Add the item to the array feed
-            $array_feed[] = $feed_item;
+        // Check if media:thumbnail exists and extract the URL and alt attribute
+        if (isset($item->children('media', true)->thumbnail)) {
+            $thumbnail = $item->children('http://search.yahoo.com/mrss/')->thumbnail->attributes();
+            $feed_item['media:thumbnail'] = [
+                'url' => (string)$thumbnail['url'],
+                'alt' => (string)$thumbnail['alt'] ?: 'Featured image for ' . $item->title
+            ];
         }
+        // Add the item to the array feed
+        $array_feed[] = $feed_item;
     }
     return $array_feed;
 }
 
 
-
-/*
-        if ( isset( $response->channel ) && !empty( $response->channel ) && '200' == wp_remote_retrieve_response_code( $response ) ) {
-              // hooray, all is well!
-              $body = ( wp_remote_retrieve_body ( $response ) );
-              $xml_string = simplexml_load_string($body);
-              $json_obj = json_encode($xml_string);
-              return json_decode($json_obj, TRUE );
-          } else {
-      
-              // still here?  Then we have an error condition
-              //this doesn't work correctly
-      
-              if ( is_wp_error ( $response ) ) {
-                  $error_message = $response->get_error_message();
-                  echo 'There was an error with the RSS Reader Plugin: ' . $error_message;
-                  return FALSE;
-              }
-              if ( '200' != wp_remote_retrieve_response_code( $response ) ) {
-                  echo $response;
-                  return FALSE;
-              }
-      
-              // still here?  the error condition is indeed unexpected
-              echo "Empty response from server?";
-              return FALSE;
-          }
-      */
-
 /**
  * Render the feed
- * @param arr feed data
+ * @param arr of the feed data - title, link, image, alt-text
  * @param arr attributes from shortcode
- * @return arr feed data
+ * @param arr urls to exclude in the feed
+ * @return arr feed output to display
  */
-function uri_rss_reader_display($feed_data, $attributes)
+function uri_rss_reader_display($feed_data, $attributes, $exclude_urls)
 {
+
+    // Get the number of feed items to display from shortcode & start a counter
+    $number = $attributes['display'];
+    $count = 0;
+
+    // Start the display
     ob_start();
     print $attributes['before'];
-    //loop through array
-    ?>
-    
-    <div class="uri-rss-reader-feed">
-    <h3 class="latest-news">Latest News</h3>
-        <?php
-
-    foreach ($feed_data as $element) {
 ?>
-        <div class="uri-rss-reader-item">
-            <?php
-            if (isset($element['media:thumbnail'])) {
-            ?>
-                <div class="uri-rss-reader-image">
-                    <img src="<?php print $element['media:thumbnail']['url'] ?>" alt="<?php print $element['media:thumbnail']['alt'] ?>">
-                </div>
-            <?php
-            } else {
-                ?>
-<div class="no-thumbnail"></div>
-                <?php
+
+    <div class="uri-rss-reader-feed">
+        <h3 class="latest-news">Latest News</h3>
+        <?php
+        //loop through array
+        foreach ($feed_data as $element) {
+            //Check for excluded urls
+            if (!in_array($element['link'], $exclude_urls)) {
+                // Check against number to display
+                if ($count++ < $number) {
+        ?>
+                    <div class="uri-rss-reader-item">
+                        <?php
+                        // Check if thumbnail exists
+                        if (isset($element['media:thumbnail'])) {
+                        ?>
+                            <div class="uri-rss-reader-image">
+                                <img src="<?php print $element['media:thumbnail']['url'] ?>" alt="<?php print $element['media:thumbnail']['alt'] ?>">
+                            </div>
+                        <?php
+                        // If no thumbanil exists, display no-thumbnail div
+                        } else {
+                        ?>
+                            <div class="no-thumbnail"></div>
+                        <?php
+                        }
+                        ?>
+                        <div class="uri-rss-reader-title-link">
+                            <a href=" <?php print $element['link'] ?> "><?php print $element['title'] ?></a>
+                        </div>
+                    </div>
+        <?php
+                } 
             }
-            ?>
-            <div class="uri-rss-reader-title-link">
-                <a href=" <?php print $element['link'] ?> "><?php print $element['title'] ?></a>
-            </div>
-        </div>
+        }
+        ?>
+    </div>
 <?php
-    }
-    ?> </div>
-    <?php
     print $attributes['after'];
     $feed_output = ob_get_clean();
     return $feed_output;
