@@ -37,3 +37,6 @@ include( URI_RSS_READER_DIR_PATH . 'inc/uri-rss-reader-shortcode.php' );
 
 // Include parsing
 include( URI_RSS_READER_DIR_PATH . 'inc/uri-rss-reader-parse.php' );
+
+// Include caching
+include( URI_RSS_READER_DIR_PATH . 'inc/uri-rss-reader-cache.php' );
