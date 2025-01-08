@@ -8,17 +8,27 @@
     display: flex;
     column-gap: 1rem;
     align-items: center;
+    max-width: 40rem;
+    line-height: 1.5rem;
 }
 
 .uri-rss-reader-image {
    display: block;
-   padding: 2rem;
+   margin: 1.25rem 0 1.25rem 0;
+   
+}
+
+.uri-rss-reader-image img {
+   width: 75px;
+   height: 75px;
+   align-self: center;
 }
 
 .no-thumbnail {
-    width: 150px;
-    height: 150px;
-    padding: 2rem;
+    //display: block;
+    padding: 2.25rem;
+    margin: 1.25rem 0 1.25rem 0;
+    background:  #2277b3;
 }
 
 .uri-rss-reader-title-link {
