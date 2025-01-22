@@ -59,6 +59,8 @@ function uri_rss_reader_build_array($rss)
         $feed_item = [
             'title' => (string)$item->title,
             'link'  => (string)$item->link,
+            'description' => (string)$item->description,
+            'date' => (string)$item->pubDate,
         ];
 
         // Check if media:thumbnail exists and extract the URL and alt attribute
@@ -114,7 +116,7 @@ function uri_rss_reader_display($feed_data, $attributes, $exclude_urls)
                                 <img src="<?php print $element['media:thumbnail']['url'] ?>" alt="<?php print $element['media:thumbnail']['alt'] ?>">
                             </div>
                         <?php
-                        // If no thumbanil exists, display no-thumbnail div
+                            // If no thumbanil exists, display no-thumbnail div
                         } else {
                         ?>
                             <div class="no-thumbnail"></div>
@@ -124,9 +126,24 @@ function uri_rss_reader_display($feed_data, $attributes, $exclude_urls)
                         <div class="uri-rss-reader-title-link">
                             <a href=" <?php print $element['link'] ?> "><?php print $element['title'] ?></a>
                         </div>
+                        <?php
+                        //Check if date should be displayed
+                        if ($attributes['date'] == 'true') {
+                        ?>
+                            <div class="date">
+                                <p> <?php print $element['date'] ?></p>
+                            </div>
+                        <?php
+                        }
+                        if ($attributes['description'] == 'true') {
+                        ?>
+                            <div class="description">
+                                <p> <?php print $element['description'] ?></p>
+                            </div>
+                        <?php } ?>
                     </div>
         <?php
-                } 
+                }
             }
         }
         ?>
