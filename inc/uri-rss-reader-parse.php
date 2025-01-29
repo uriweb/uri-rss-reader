@@ -60,7 +60,7 @@ function uri_rss_reader_build_array($rss)
             'title' => (string)$item->title,
             'link'  => (string)$item->link,
             'description' => (string)$item->description,
-            'date' => (string)$item->pubDate,
+            'date' => substr((string)$item->pubDate, 0, 16),
         ];
 
         // Check if media:thumbnail exists and extract the URL and alt attribute
@@ -109,18 +109,22 @@ function uri_rss_reader_display($feed_data, $attributes, $exclude_urls)
         ?>
                     <div class="uri-rss-reader-item">
                         <?php
-                        // Check if thumbnail exists
-                        if (isset($element['media:thumbnail'])) {
+                        // Check if images are chosen to be displayed 
+                        if ($attributes['image'] == 'true') {
+                            // Check if thumbnail exists
+                            if (isset($element['media:thumbnail'])) {
                         ?>
-                            <div class="uri-rss-reader-image">
-                                <img src="<?php print $element['media:thumbnail']['url'] ?>" alt="<?php print $element['media:thumbnail']['alt'] ?>">
-                            </div>
+                                <div class="uri-rss-reader-image">
+                                    <img src="<?php print $element['media:thumbnail']['url'] ?>" alt="<?php print $element['media:thumbnail']['alt'] ?>">
+                                </div>
+                            <?php
+                                // If no thumbanil exists, display no-thumbnail div
+                            } else {
+                            ?>
+                                <div class="no-thumbnail">
+                                </div>
                         <?php
-                            // If no thumbanil exists, display no-thumbnail div
-                        } else {
-                        ?>
-                            <div class="no-thumbnail"></div>
-                        <?php
+                            }
                         }
                         ?>
                         <div class="uri-rss-reader-title-link">
