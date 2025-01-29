@@ -60,7 +60,7 @@
 
 .uri-rss-reader-image {
   display: block;
-  margin: 1.25rem 0 1.25rem 0;
+  //margin: 1.25rem 0 1.25rem 0;
 }
 
 .uri-rss-reader-image img {
@@ -74,9 +74,15 @@
 }
 
 .no-thumbnail {
-  padding: 2.25rem;
-  margin: 1.25rem 0 1.25rem 0;
-  background: #2277b3;
+  padding: 3rem;
+  margin: 1.25rem 1.25rem 1.25rem 0;
+  float: left;
+   border: black 1px;
+  background-image: url('../images/no-img-th.jpg');
+  background-repeat: no-repeat;
+  background-size: 100px;
+  
+  
 }
 
 .uri-rss-reader-title-link a{
