@@ -18,9 +18,9 @@ function uri_rss_reader_shortcode($attributes, $shortcode)
             'url' => NULL,
             'display' => '20',
             'exclude' => NULL,
-            'description' => 'true',
-            'date' => 'true',
-            'image' => 'true', 
+            'include_excerpt' => 'true',
+            'include_date' => 'true',
+            'include_image' => 'true', 
             'cache' => '1 hour',
             'before' => '<div class="uri-rss-reader">',
             'after' => '</div>'
