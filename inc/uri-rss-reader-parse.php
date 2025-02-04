@@ -138,7 +138,7 @@ function uri_rss_reader_display($feed_data, $attributes, $exclude_urls)
                             </div>
                         <?php
                         }
-                        if ($attributes['include_description'] == 'true') {
+                        if ($attributes['include_excerpt'] == 'true') {
                         ?>
                             <div class="description">
                                 <p> <?php print $element['description'] ?></p>
