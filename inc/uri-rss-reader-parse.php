@@ -68,7 +68,7 @@ function uri_rss_reader_build_array($rss)
             $thumbnail = $item->children('http://search.yahoo.com/mrss/')->thumbnail->attributes();
             $feed_item['media:thumbnail'] = [
                 'url' => (string)$thumbnail['url'],
-                'alt' => (string)$thumbnail['alt'] ?: 'Featured image for ' . $item->title
+                'alt' => (string)$thumbnail['alt'] ?: "",
             ];
         }
         // Add the item to the array feed
@@ -98,7 +98,6 @@ function uri_rss_reader_display($feed_data, $attributes, $exclude_urls)
 ?>
 
     <div class="uri-rss-reader-feed">
-        <h3 class="latest-news">Latest News</h3>
         <?php
         //loop through array
         foreach ($feed_data as $element) {
@@ -110,7 +109,7 @@ function uri_rss_reader_display($feed_data, $attributes, $exclude_urls)
                     <div class="uri-rss-reader-item">
                         <?php
                         // Check if images are chosen to be displayed 
-                        if ($attributes['image'] == 'true') {
+                        if ($attributes['include_image'] == 'true') {
                             // Check if thumbnail exists
                             if (isset($element['media:thumbnail'])) {
                         ?>
@@ -132,14 +131,14 @@ function uri_rss_reader_display($feed_data, $attributes, $exclude_urls)
                         </div>
                         <?php
                         //Check if date should be displayed
-                        if ($attributes['date'] == 'true') {
+                        if ($attributes['include_date'] == 'true') {
                         ?>
                             <div class="date">
                                 <p> <?php print $element['date'] ?></p>
                             </div>
                         <?php
                         }
-                        if ($attributes['description'] == 'true') {
+                        if ($attributes['include_description'] == 'true') {
                         ?>
                             <div class="description">
                                 <p> <?php print $element['description'] ?></p>
