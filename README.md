@@ -8,7 +8,7 @@ Paste the shortcode into a page to display the news feed.
 ## Parameters:
 
 ### url 
-The url of the rss feed \
+The url of the rss feed. \
 default: null \
 Ex: ```[uri-rss-reader url="https://www.uri.edu/news/tag/college-of-arts-and-sciences/feed"]```
 
@@ -18,27 +18,27 @@ default: 20 \
 Ex: ```[uri-rss-reader url="{url}" display="5"]```
 
 ### exclude
-Any posts to exclude from display \
+Any posts to exclude from display. \
 default: null \
 Ex: ```[uri-rss-reader url="{url}" exclude="{first_url}, {second_url}"]```
 
 ### cache 
-Cache time-out \
+Cache time-out. \
 default: 1 hour \
 Ex: ```[uri-rss-reader url="{url}" cache="30 minutes"]```
 
 ### include_excerpt
-Display the excerpt \
+Display the excerpt. \
 default: true \
 Ex: ```[uri-rss-reader url="{url}" include_excerpt="false"]```
 
 ### include_date
-Display the date \
+Display the date. \
 default: true \
 Ex: ```[uri-rss-reader url="{url}" include_date="false"]```
 
 ### include_image 
-Display thumbnail image \
+Display the thumbnail image. \
 default: true \
 Ex: ```[uri-rss-reader url="{url}" include_image="false"]```
 
@@ -53,7 +53,7 @@ Ex: ```[uri-rss-reader url="{url}" include_image="false"]```
 URI RSS Reader Plugin  
 An RSS reader plugin that displays a news feed via shortcode.
 
-Contributors: Alexandra Gauss 
+Contributors: Alexandra Gauss \
 Tags: plugins  
 Requires at least: 4.0  
 Tested up to: 6.6.2  
