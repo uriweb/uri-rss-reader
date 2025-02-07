@@ -3,11 +3,44 @@
 The URI RSS Reader plugin displays an RSS news feed via a shortcode.
 
 ## How do I use the shortcode?
-Paste the shortcode into a page to display the news feed. By default, the URI RSS Reader will display the first 20 posts in the feed. To exclude any posts, use the 'exclude' attribute in the shortcode with a list of urls seperated by a ```comma``` + ```space```. To display a fewer/larger number of posts use the 'display' attribute. Other attributes include the cache time-out (default is 1 hour) and 'before' and 'after' div classes.
+Paste the shortcode into a page to display the news feed. 
 
-```
-[uri-rss-reader url="https://example.edu/feed" exclude="https://exclude.edu/one, https://exclude.edu/two" cache="1 hour" display="5"]
- ```
+## Parameters:
+
+### url 
+The url of the rss feed \
+default: null \
+Ex: ```[uri-rss-reader url="https://www.uri.edu/news/tag/college-of-arts-and-sciences/feed"]```
+
+### display
+How many posts to display.\
+default: 20 \
+Ex: ```[uri-rss-reader url="{url}" display="5"]```
+
+### exclude
+Any posts to exclude from display \
+default: null \
+Ex: ```[uri-rss-reader url="{url}" exclude="{first_url}, {second_url}"]```
+
+### cache 
+Cache time-out \
+default: 1 hour \
+Ex: ```[uri-rss-reader url="{url}" cache="30 minutes"]```
+
+### include_excerpt
+Display the excerpt \
+default: true \
+Ex: ```[uri-rss-reader url="{url}" include_excerpt="false"]```
+
+### include_date
+Display the date \
+default: true \
+Ex: ```[uri-rss-reader url="{url}" include_date="false"]```
+
+### include_image 
+Display thumbnail image \
+default: true \
+Ex: ```[uri-rss-reader url="{url}" include_image="false"]```
 
 
 ## Plugin Details
