@@ -1,34 +1,46 @@
-# URI Plugin Template
+# URI RSS Reader
 
-The URI Plugin Template repository is a base template for building WordPress plugins with gulp, PHP Code Sniffer, and Travis CI.
+The URI RSS Reader plugin displays an RSS news feed via a shortcode.
 
-## How do I get set up?
+## How do I use the shortcode?
+Paste the shortcode into a page to display the news feed. 
 
-There are a few things you need to do to get up and running:
+## Parameters:
 
-1. Download [master.zip](https://github.com/uriweb/uri-plugin-template/archive/master.zip) and unzip it
+### url 
+The url of the rss feed. \
+default: null \
+Ex: ```[uri-rss-reader url="https://www.uri.edu/news/tag/college-of-arts-and-sciences/feed"]```
 
-2. Rename `.gitattributes-sample` to `.gitattributes`
+### display
+How many posts to display.\
+default: 20 \
+Ex: ```[uri-rss-reader url="{url}" display="5"]```
 
-3. Rename the main plugin file [`uri-plugin-template.php`](https://github.com/uriweb/uri-plugin-template/blob/master/uri-plugin-template.php) and update the header to match your new plugin.
+### exclude
+Any posts to exclude from display. \
+default: null \
+Ex: ```[uri-rss-reader url="{url}" exclude="{first_url}, {second_url}"]```
 
-4. Update [`package.json`](https://github.com/uriweb/uri-plugin-template/blob/master/package.json) with your new plugin info.
+### cache 
+Cache time-out. \
+default: 1 hour \
+Ex: ```[uri-rss-reader url="{url}" cache="30 minutes"]```
 
-5. Update the `@package` tag in [`src/js/script.js`](https://github.com/uriweb/uri-plugin-template/blob/master/src/js/script.js).
+### include_excerpt
+Display the excerpt. \
+default: true \
+Ex: ```[uri-rss-reader url="{url}" include_excerpt="false"]```
 
-6. Gulp runs a task to update the plugin version number from `package.json`, so you don't have to update it in two places.  However, gulp looks for the main plugin file by name in order to do this, so you'll need to update [`gulp.js`](https://github.com/uriweb/uri-plugin-template/blob/e7208805f9fedd83c29739de3307e91a0e64aaea/gulpfile.js#L86) to reflect the new name.
+### include_date
+Display the date. \
+default: true \
+Ex: ```[uri-rss-reader url="{url}" include_date="false"]```
 
-7. If you already have gulp and gulp-cli installed globally, install gulp and devDependencies in the project directory:
-
-```shell
-$ cd <project_dir>
-$ npm install gulp
-$ npm install --save-dev
-```
-
-Finally, don't forget to update this readme.
-
-**For a more thorough install, and for PHP Code Sniffer support, head over to [SETUP.md](https://github.com/uriweb/uri-plugin-template/blob/master/SETUP.md).**
+### include_image 
+Display the thumbnail image. \
+default: true \
+Ex: ```[uri-rss-reader url="{url}" include_image="false"]```
 
 
 ## Plugin Details
@@ -38,11 +50,11 @@ Finally, don't forget to update this readme.
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/77712193bd8643f88fad1fbdc8a02c87)](https://www.codacy.com/app/uriweb/uri-plugin-template?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=uriweb/uri-plugin-template&amp;utm_campaign=Badge_Grade)
 [![devDependencies Status](https://david-dm.org/uriweb/uri-plugin-template/dev-status.svg)](https://david-dm.org/uriweb/uri-plugin-template?type=dev)
 
-URI Plugin Template  
-A base template for building WordPress plugins with gulp, PHP Code Sniffer, and Travis CI.
+URI RSS Reader Plugin  
+An RSS reader plugin that displays a news feed via shortcode.
 
-Contributors: Brandon Fuller  
+Contributors: Alexandra Gauss \
 Tags: plugins  
 Requires at least: 4.0  
-Tested up to: 4.9  
-Stable tag: 0.1.0  
+Tested up to: 6.7.1  
+Stable tag: 1.0.0  

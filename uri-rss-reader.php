@@ -3,7 +3,7 @@
  * Plugin Name: URI RSS Reader
  * Plugin URI: http://www.uri.edu
  * Description: A RSS Reader for news feeds
- * Version: 0.1.0
+ * Version: 1.0.0
  * Author: URI Web Communications
  * Author URI: https://today.uri.edu/
  *
@@ -15,6 +15,8 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
+
+define( 'URI_RSS_READER_DIR_PATH', plugin_dir_path( __FILE__ ) );
 
 /**
  * Include css and js
@@ -29,3 +31,12 @@ function uri_rss_reader_enqueues() {
 
 }
 add_action( 'wp_enqueue_scripts', 'uri_rss_reader_enqueues' );
+
+// Include shortcodes
+include( URI_RSS_READER_DIR_PATH . 'inc/uri-rss-reader-shortcode.php' );
+
+// Include parsing
+include( URI_RSS_READER_DIR_PATH . 'inc/uri-rss-reader-parse.php' );
+
+// Include caching
+include( URI_RSS_READER_DIR_PATH . 'inc/uri-rss-reader-cache.php' );
