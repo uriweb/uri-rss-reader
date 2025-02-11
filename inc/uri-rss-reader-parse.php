@@ -14,6 +14,7 @@
 function uri_rss_reader_get_xml($url)
 {
     $response = wp_safe_remote_get($url);
+    //var_dump($response);
 
     if ($response['headers']['content-type'] == 'application/rss+xml; charset=UTF-8' && '200' == wp_remote_retrieve_response_code($response)) {
         // hooray, all is well!
@@ -24,23 +25,25 @@ function uri_rss_reader_get_xml($url)
 
         // still here?  Then we have an error condition
 
+
         if (is_wp_error($response)) {
             $error_message = $response->get_error_message();
-            echo 'There was an error with the RSS Reader Plugin: ' . $error_message;
-            return FALSE;
+            echo 'There was an error with the URI RSS Reader: ' . $error_message;
+            return false;
         }
         if ('200' != wp_remote_retrieve_response_code($response)) {
-            echo $response;
-            return FALSE;
+            $error_code = wp_remote_retrieve_response_code($response);
+            echo 'There was an error with the URI RSS Reader: ' . $error_code;
+            return false;
         }
         if ($response['headers']['content-type'] == 'text/html; charset=UTF-8') {
             echo "Not a valid RSS feed.";
-            return FALSE;
+            return false;
         }
 
         // still here?  the error condition is indeed unexpected
         echo "Server not responding?";
-        return FALSE;
+        return false;
     }
 }
 
@@ -87,6 +90,7 @@ function uri_rss_reader_build_array($rss)
  */
 function uri_rss_reader_display($feed_data, $attributes, $exclude_urls)
 {
+    if ($feed_data) {
 
     // Get the number of feed items to display from shortcode & start a counter
     $number = $attributes['display'];
@@ -155,4 +159,5 @@ function uri_rss_reader_display($feed_data, $attributes, $exclude_urls)
     print $attributes['after'];
     $feed_output = ob_get_clean();
     return $feed_output;
+}
 }

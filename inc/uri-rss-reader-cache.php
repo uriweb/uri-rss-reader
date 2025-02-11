@@ -117,7 +117,8 @@ function uri_rss_reader_get_the_feed($url)
 
 	// otherwise, get the xml data from the url...
 	$rss = uri_rss_reader_get_xml($url);
-
+	
+if($rss) {
 	// build the feed from the xml items we want [title, link, thumbnail image, alt-text]...
 	$feed_data = uri_rss_reader_build_array($rss);
 
@@ -126,4 +127,5 @@ function uri_rss_reader_get_the_feed($url)
 
 	// and return the feed data.
 	return $feed_data;
+}
 }
