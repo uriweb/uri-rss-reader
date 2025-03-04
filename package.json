@@ -1,7 +1,7 @@
 {
   "name": "uri-rss-reader",
   "description": "URI RSS Reader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://www.uri.edu",
   "repository": "https://github.com/uriweb/uri-rss-reader",
   "docs": "https://github.com/uriweb/uri-rss-reader#readme",
