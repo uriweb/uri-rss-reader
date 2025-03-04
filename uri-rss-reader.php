@@ -3,7 +3,7 @@
  * Plugin Name: URI RSS Reader
  * Plugin URI: http://www.uri.edu
  * Description: A RSS Reader for news feeds
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: URI Web Communications
  * Author URI: https://today.uri.edu/
  *
