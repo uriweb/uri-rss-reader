@@ -94,6 +94,10 @@ function uri_rss_reader_display($feed_data, $attributes, $exclude_urls)
 
     // Get the number of feed items to display from shortcode & start a counter
     $number = $attributes['display'];
+    //If style is ticker, then number is 3
+    if ($attributes['style'] == 'ticker') {
+        $number = 3;
+    }
     $count = 0;
 
     //Get style
