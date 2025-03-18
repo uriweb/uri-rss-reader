@@ -1,4 +1,4 @@
-/* Latest News */
+/* News Ticker Style */
 
 .uri-rss-reader-ticker {
 	position: relative;
@@ -63,14 +63,6 @@
 	grid-column-gap: .5rem;
 	width: 850px;
 }
-/*
-.uri-rss-reader-feed-ticker .display-posts-listing {
-	display: grid;
-	grid-template-columns: repeat(3, auto);
-	grid-column-gap: .5rem;
-	width: 850px;
-}
-*/
 
 .uri-rss-reader-item-ticker {
 	justify-self: center;
@@ -93,16 +85,38 @@
 	margin: 0 !important;
 }
 
+.uri-rss-reader-title-link-ticker a {
+    color:#000;
+    display: block;
+    font-weight: 600; 
+    line-height: 1.5;
+    font-family: "Lato","Hind",Arial,sans-serif;
+}
+
 .date-ticker {
 	display: none;
 }
 
-.uri-rss-reader-image-ticker {
+.description-ticker {
+    display: none;
+}
+
+.uri-rss-reader-image-ticker img {
 	width: 48px;
 	height: auto;
 	border-radius: .2rem;
 	float: left;
 }
+
+/*
+.no-thumbnail-ticker{ 
+    background: url('https://www.uri.edu/wp-content/uploads/home/2025/01/no-img-th.jpg') no-repeat;
+    float: left;
+  background-size: 48px;
+  width: 48px;
+  height: 48px;
+}
+  */
 
 @media screen and (min-width:600px) {
 	.uri-rss-reader-ticker {
@@ -130,5 +144,3 @@
 		min-width: initial;
 	}
 }
-
-/* End Latest News */
