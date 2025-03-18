@@ -96,12 +96,21 @@ function uri_rss_reader_display($feed_data, $attributes, $exclude_urls)
     $number = $attributes['display'];
     $count = 0;
 
+    //Get style
+    if ($attributes['style'] == 'ticker') {
+        $style = '-ticker';
+    }
+    if ($attributes['style'] == 'default') {
+        $style = '';
+    }
+
     // Start the display
     ob_start();
     print $attributes['before'];
 ?>
 
-    <div class="uri-rss-reader-feed">
+    <div class="uri-rss-reader-feed<?php print $style ?>">
+        <div class="uri-rss-reader-display-listing<?php print $style ?>">
         <?php
         //loop through array
         foreach ($feed_data as $element) {
@@ -110,41 +119,41 @@ function uri_rss_reader_display($feed_data, $attributes, $exclude_urls)
                 // Check against number to display
                 if ($count++ < $number) {
         ?>
-                    <div class="uri-rss-reader-item">
+                    <div class="uri-rss-reader-item<?php print $style ?>">
                         <?php
                         // Check if images are chosen to be displayed 
                         if ($attributes['include_image'] == 'true') {
                             // Check if thumbnail exists
                             if (isset($element['media:thumbnail'])) {
                         ?>
-                                <div class="uri-rss-reader-image">
+                                <div class="uri-rss-reader-image<?php print $style ?>">
                                     <img src="<?php print $element['media:thumbnail']['url'] ?>" alt="<?php print $element['media:thumbnail']['alt'] ?>">
                                 </div>
                             <?php
                                 // If no thumbanil exists, display no-thumbnail div
                             } else {
                             ?>
-                                <div class="no-thumbnail">
+                                <div class="no-thumbnail<?php print $style ?>">
                                 </div>
                         <?php
                             }
                         }
                         ?>
-                        <div class="uri-rss-reader-title-link">
+                        <div class="uri-rss-reader-title-link<?php print $style ?>">
                             <a href=" <?php print $element['link'] ?> "><?php print $element['title'] ?></a>
                         </div>
                         <?php
                         //Check if date should be displayed
                         if ($attributes['include_date'] == 'true') {
                         ?>
-                            <div class="date">
+                            <div class="date<?php print $style ?>">
                                 <p> <?php print $element['date'] ?></p>
                             </div>
                         <?php
                         }
                         if ($attributes['include_excerpt'] == 'true') {
                         ?>
-                            <div class="description">
+                            <div class="description<?php print $style ?>">
                                 <p> <?php print $element['description'] ?></p>
                             </div>
                         <?php } ?>
@@ -154,6 +163,7 @@ function uri_rss_reader_display($feed_data, $attributes, $exclude_urls)
             }
         }
         ?>
+        </div>
     </div>
 <?php
     print $attributes['after'];
