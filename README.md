@@ -45,6 +45,12 @@ Display the thumbnail image. \
 default: true \
 Ex: ```[uri-rss-reader url="{url}" include_image="false"]```
 
+### style
+Choose a display style: "default" or "ticker".  
+Note: The "ticker" style doesn't display the date or excerpt. It only displays 3 items. \
+default: "default" \
+Ex: ```[uri-rss-reader url="{url}" style="ticker"]```
+
 
 ## Plugin Details
 

@@ -23,7 +23,8 @@ function uri_rss_reader_shortcode($attributes, $shortcode)
             'include_image' => 'true', 
             'cache' => '1 hour',
             'before' => '<div class="uri-rss-reader">',
-            'after' => '</div>'
+            'after' => '</div>',
+            'style' => 'default'
         ),
         $attributes,
         $shortcode
