@@ -47,9 +47,21 @@ Ex: ```[uri-rss-reader url="{url}" include_image="false"]```
 
 ### style
 Choose a display style: "default" or "ticker".  
-Note: The "ticker" style doesn't display the date or excerpt. It only displays 3 items. \
+Note: The "ticker" style doesn't display the date or excerpt. It only displays 3 headlines. \
 default: "default" \
 Ex: ```[uri-rss-reader url="{url}" style="ticker"]```
+
+### title
+Title for the ticker style. \
+default: 'Latest News' \
+Ex: ```[uri-rss-reader url="{url}" style="ticker" title="Research News"]```
+
+### heading level
+Heading level for the title on the ticker style. \
+default: 2 \
+Ex: ```[uri-rss-reader url="{url}" style="ticker" title="Research News" heading_level="3"] ```
+
+
 
 
 ## Plugin Details
