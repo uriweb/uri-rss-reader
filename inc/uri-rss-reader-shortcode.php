@@ -24,7 +24,9 @@ function uri_rss_reader_shortcode($attributes, $shortcode)
             'cache' => '1 hour',
             'before' => '<div class="uri-rss-reader">',
             'after' => '</div>',
-            'style' => 'default'
+            'style' => 'default',
+            'title' => 'Latest News',
+            'heading_level' => '2'
         ),
         $attributes,
         $shortcode

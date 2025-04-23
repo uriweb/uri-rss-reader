@@ -115,9 +115,10 @@ function uri_rss_reader_display($feed_data, $attributes, $exclude_urls)
 
         //If ticker style, add an h2
         if ($attributes['style'] == 'ticker') {
+            $heading = 'h' . $attributes['heading_level'];
 ?>
             <div class="uri-rss-reader-heading-ticker">
-                <h2>Latest News</h2>
+                <<?php print $heading ?>><?php print $attributes['title'] ?></<?php print $heading ?>>
             </div>
         <?php
         }

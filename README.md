@@ -2,8 +2,8 @@
 
 The URI RSS Reader plugin displays an RSS news feed via a shortcode.
 
-## What's New in 1.2.1?
-This is a bug fix release that adds cache busting to the css and js files.
+## What's New in 1.2.2?
+This release adds a shortcode parameter for the title text and heading level on the ticker-style display. 
 
 ## How do I use the shortcode?
 Paste the shortcode into a page to display the news feed. 
@@ -47,9 +47,21 @@ Ex: ```[uri-rss-reader url="{url}" include_image="false"]```
 
 ### style
 Choose a display style: "default" or "ticker".  
-Note: The "ticker" style doesn't display the date or excerpt. It only displays 3 items. \
+Note: The "ticker" style doesn't display the date or excerpt. It only displays 3 headlines. \
 default: "default" \
 Ex: ```[uri-rss-reader url="{url}" style="ticker"]```
+
+### title
+Title for the ticker style. \
+default: 'Latest News' \
+Ex: ```[uri-rss-reader url="{url}" style="ticker" title="Research News"]```
+
+### heading level
+Heading level for the title on the ticker style. \
+default: 2 \
+Ex: ```[uri-rss-reader url="{url}" style="ticker" title="Research News" heading_level="3"] ```
+
+
 
 
 ## Plugin Details
@@ -66,4 +78,4 @@ Contributors: Alexandra Gauss \
 Tags: plugins  
 Requires at least: 4.0  
 Tested up to: 6.7.2  
-Stable tag: 1.2.1 
+Stable tag: 1.2.2 
