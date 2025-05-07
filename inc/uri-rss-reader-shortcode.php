@@ -17,7 +17,7 @@ function uri_rss_reader_shortcode($attributes, $shortcode)
         array(
             'url' => NULL,
             'display' => '20',
-            'exclude' => NULL,
+            'exclude' => '',
             'include_excerpt' => 'true',
             'include_date' => 'true',
             'include_image' => 'true', 
