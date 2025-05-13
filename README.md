@@ -2,8 +2,8 @@
 
 The URI RSS Reader plugin displays an RSS news feed via a shortcode.
 
-## What's New in 1.2.2?
-This release adds a shortcode parameter for the title text and heading level on the ticker-style display. 
+## What's New in 1.2.3?
+This release fixes an error in PHP 8.3. 
 
 ## How do I use the shortcode?
 Paste the shortcode into a page to display the news feed. 
@@ -78,4 +78,4 @@ Contributors: Alexandra Gauss \
 Tags: plugins  
 Requires at least: 4.0  
 Tested up to: 6.7.2  
-Stable tag: 1.2.2 
+Stable tag: 1.2.3 
